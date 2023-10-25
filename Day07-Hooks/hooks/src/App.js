@@ -5,6 +5,7 @@ import TwoWayBinding from "./components/TwoWayBinding";
 import TwoWayBindingFormSubmit from "./components/TwoWayBindingFormSubmit";
 import InitStateCallBack from "./components/InitStateCallBack";
 import PlayListApp from "./components/PlayList/PlayListApp";
+import SelectCar from "./components/HomeWork/SelectCar";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         {/*<TwoWayBinding/>*/}
         {/*<TwoWayBindingFormSubmit/>*/}
         {/*<InitStateCallBack/>*/}
-        <PlayListApp/>
+        {/*<PlayListApp/>*/}
+        <SelectCar/>
       </div>
   );
 }
