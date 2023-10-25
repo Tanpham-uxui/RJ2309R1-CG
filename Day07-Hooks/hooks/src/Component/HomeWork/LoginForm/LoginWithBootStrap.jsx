@@ -51,7 +51,7 @@ class LoginWithBootStrap extends React.Component {
     const {isLoggedIn, form} = this.state
     if (isLoggedIn) return (<Home onLogOut={this.handleLogOut}/>)
     return (
-        <div className="container d-flex align-items-center text-center">
+        <div className=" d-flex align-items-center text-center">
           <div className="form-signin">
             <form>
               <img className="mb-4"
