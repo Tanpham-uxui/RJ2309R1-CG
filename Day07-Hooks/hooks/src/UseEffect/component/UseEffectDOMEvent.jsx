@@ -16,16 +16,16 @@ function UseEffectDOMEvent() {
         })
   }, [])
   useEffect(()=>{
-        const handleScroll = ()=>{
-          if (window.scrollY >= 150){
-            setGoToTop(true)
-          } else {
-            setGoToTop(false)
-          }
-        }
-        window.addEventListener('scroll', handleScroll)
+    const handleScroll = ()=>{
+      if (window.scrollY >= 150){
+        setGoToTop(true)
+      } else {
+        setGoToTop(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
     return () => {
-          window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll)
     }
   },[])
   const handleScrollToTop = () => {
@@ -56,7 +56,7 @@ function UseEffectDOMEvent() {
           right:'30px',
           bottom:'40px'
         }}
-        onClick={()=>{handleScrollToTop()}}
+                                 onClick={()=>{handleScrollToTop()}}
         >Go to top </button>)}
 
       </>
