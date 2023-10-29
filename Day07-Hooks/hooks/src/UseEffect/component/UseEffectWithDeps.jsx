@@ -55,10 +55,6 @@ function UseEffectWithDeps() {
       ...state,
       page: page - 1
     })
-    e.target.classList.add("active")
-    setTimeout(() => {
-      e.target.classList.remove("active");
-    }, 1000);
     handleAddActive(e)
   }
   const handleNext = (e) => {
@@ -90,7 +86,7 @@ function UseEffectWithDeps() {
                               <h5 className='card-title'>{post.title}</h5>
                               <p className='card-text'>{post.description}
                               </p>
-                              <p className='card-footer fw-bold border-0 bg-white'>{post.author}</p>
+                              <p className='card-footer fw-bold border-0 bg-white p'>{post.author}</p>
                             </div>
                           </div>
                         </div>
@@ -98,12 +94,14 @@ function UseEffectWithDeps() {
                 )}
               </div>
               <ul className="pagination d-flex justify-content-center">
+                {/*Trang lui*/}
                 <li className="page-item">
                   <button
                       className={`page-link ${page === 1 ? 'disabled' : ''}`}
                       onClick={handlePrevious}>Previous
                   </button>
                 </li>
+                {/*Số Trang*/}
                 {jsxGenerator(1,maxPage, (index)=> (
                     <li key={index} className="page-item">
                       <button
@@ -113,6 +111,7 @@ function UseEffectWithDeps() {
                       </button>
                     </li>)
                 )}
+                {/*Trang tới*/}
                 <li className="page-item">
                   <button
                       className={`page-link ${page === maxPage ? 'disabled' : ''}`}
