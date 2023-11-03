@@ -10,6 +10,11 @@ function CreateStaff() {
       'fullName': 'Full Name is a require field',
       'email': 'Email is a require field'
     }
+    ,
+    touch: {
+      'fullName': false,
+      'email': false
+    }
   })
   const handleInputValue = (e) => {
     if (e.target.value) {
@@ -22,6 +27,10 @@ function CreateStaff() {
         errors: {
           ...form.errors,
           [e.target.name]: ''
+        },
+        touch: {
+          ...form.touch,
+          [e.target.name]: document.activeElement == e.target
         }
       })
     } else {
@@ -34,6 +43,10 @@ function CreateStaff() {
         errors: {
           ...form.errors,
           [e.target.name]: `${e.target.value} is a require field`
+        },
+        touch: {
+          ...form.touch,
+          [e.target.name]: document.activeElement == e.target
         }
       })
     }
@@ -56,6 +69,10 @@ function CreateStaff() {
       errors: {
         'fullName': 'Full Name is a require field',
         'email': 'Email is a require field'
+      },
+      touch: {
+        'fullName': false,
+        'email': false
       }
     })
   }
@@ -69,7 +86,7 @@ function CreateStaff() {
                    name='fullName' onInput={handleInputValue}
                    value={form.values.fullName}
             />
-            <span>{form.errors?.fullName}</span>
+            <span>{form.touch.fullName && form.errors?.fullName}</span>
           </div>
           <div className='form-group mb-3'>
             <label>Email</label>
@@ -77,7 +94,7 @@ function CreateStaff() {
                    name='email' onInput={handleInputValue}
                    value={form.values.email}
             />
-            <span>{form.errors?.email}</span>
+            <span>{form.touch.email && form.errors?.email}</span>
           </div>
           <div className='form-group mb-3 d-flex gap-2'>
             <button type='submit' className='btn btn-sm btn-dark'> Create</button>
