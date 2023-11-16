@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+html {
+  width: 100%;
+  background-color: #222529;
+}
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+#root {
+  background-color: #222529;
+  height: fit-content;
 }

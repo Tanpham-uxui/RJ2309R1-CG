@@ -1,12 +1,27 @@
 import React, {useEffect, useState} from "react";
 import {BulletList} from "react-content-loader";
-import {LoadingTable} from "./LoadingAnimation";
+import {Link} from "react-router-dom";
+import {
+  Button,
+  createTheme,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  ThemeProvider, Typography
+} from "@mui/material";
+import {dark} from "@mui/material/styles/createPalette";
+import {Details, Info} from "@mui/icons-material";
+
 
 function TeacherList() {
   const [state, setState] = useState(
       {
-          teacherList: [],
-          isLoading: false
+        teacherList: [],
+        isLoading: false
       }
   )
   const {teacherList, isLoading} = state
@@ -24,43 +39,50 @@ function TeacherList() {
               isLoading: false
             }))
   }, [])
-  console.log(teacherList)
-
   return (
       <>
         <div>
-          <h3>Teacher List</h3>
-          <table className='table'>
-            <thead>
-            <tr>
-              <th>#ID</th>
-              <th>Full Name</th>
-              <th>DOB</th>
-              <th>Email</th>
-              <th>Gender</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            {isLoading ?
-                (<tr>
-                  <td colSpan={6}>
-                    <BulletList width={1200}/>
-                  </td>
-                </tr>)
-                : teacherList.map((teacher) => (
-                    <tr key={teacher.id}>
-                      <td>{teacher.id}</td>
-                      <td>{teacher.name}</td>
-                      <td>{teacher.dob}</td>
-                      <td>{teacher.email}</td>
-                      <td>{teacher.gender ? 'Male' : 'Female'}</td>
-                      <td></td>
-                    </tr>
-                ))
-            }
-            </tbody>
-          </table>
+          <Typography variant='h3' className={'text-white'}>Teacher List</Typography>
+
+          <TableContainer
+              component={Paper}
+              sx={{backgroundColor: 'background.paper'}}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>#ID</TableCell>
+                  <TableCell>Full Name</TableCell>
+                  <TableCell>DOB</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Gender</TableCell>
+                  <TableCell>Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {isLoading ?
+                    (<TableRow>
+                      <TableCell colSpan={6}>
+                        <BulletList width={1200}/>
+                      </TableCell>
+                    </TableRow>)
+                    : teacherList.map((teacher) => (
+                        <TableRow key={teacher.id}>
+                          <TableCell>{teacher.id}</TableCell>
+                          <TableCell>{teacher.name}</TableCell>
+                          <TableCell>{teacher.dob}</TableCell>
+                          <TableCell>{teacher.email}</TableCell>
+                          <TableCell>{teacher.gender ? 'Male' : 'Female'}</TableCell>
+                          <TableCell>
+                            <Button variant={"outlined"} component={Link} to={`/teachers/${teacher.id}`}>
+                              <Info/>
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                    ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
       </>
   )
