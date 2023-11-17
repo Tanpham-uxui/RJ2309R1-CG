@@ -3,7 +3,6 @@ import {BulletList} from "react-content-loader";
 import {Link} from "react-router-dom";
 import {
   Button,
-  createTheme,
   Paper,
   Table,
   TableBody,
@@ -11,10 +10,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  ThemeProvider, Typography
+ Typography
 } from "@mui/material";
-import {dark} from "@mui/material/styles/createPalette";
-import {Details, Info} from "@mui/icons-material";
+
+import { Info} from "@mui/icons-material";
 
 
 function TeacherList() {
@@ -42,11 +41,10 @@ function TeacherList() {
   return (
       <>
         <div>
-          <Typography variant='h3' className={'text-white'}>Teacher List</Typography>
-
+          <Typography variant='h3' mb={2} sx={{color:'text.primary'}}>Teacher List</Typography>
           <TableContainer
               component={Paper}
-              sx={{backgroundColor: 'background.paper'}}
+              sx={{backgroundColor: 'background.paper', border: 1}}
           >
             <Table>
               <TableHead>

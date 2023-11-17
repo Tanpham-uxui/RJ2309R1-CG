@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import TeacherDetail from "./Teacher/TeacherDetail";
 import {Container, createTheme, ThemeProvider} from "@mui/material";
 import {dark} from "@mui/material/styles/createPalette";
+import ResponsiveAppBar from "./Component/ResponsiveAppBar";
 
 function App() {
   const darkTheme = createTheme({
@@ -13,6 +14,8 @@ function App() {
     },
   })
   return (
+      <>
+      <ResponsiveAppBar/>
       <ThemeProvider theme={darkTheme}>
         <Container className={'bg-dark'}>
       <Routes>
@@ -22,6 +25,7 @@ function App() {
       </Routes>
         </Container>
       </ThemeProvider>
+      </>
   );
 }
 
